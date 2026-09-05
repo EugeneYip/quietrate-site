@@ -2,37 +2,45 @@
 
 Static, dependency-free pre-release website for `quietrate.app`.
 
+QuietRate 1.0 is in TestFlight/internal pre-release testing and is not yet publicly available on the App Store.
+
 ## Pages
 - `/` — product landing page
 - `/privacy/` — pre-release privacy policy
 - `/support/` — support and contact
 - `/sources/` — source and methodology transparency
 
-## Technical choices
+## V1 production source architecture
+- Production source architecture is frozen as **European Central Bank (ECB) + Taiwan Futures Exchange (TAIFEX)**.
+- ECB reference-rate observations are retrieved through `api.frankfurter.dev` with the provider explicitly pinned to `ECB`.
+- Frankfurter is transport/API infrastructure for the ECB path, not the source institution.
+- TWD uses TAIFEX Daily Foreign Exchange Reference Rates.
+- Cross rates that require observations from both source families are calculated by QuietRate and must remain identified as derived.
+- Effective date and retrieval time are distinct concepts and must not be conflated.
+
+## Technical and brand choices
 - No JavaScript
 - No external fonts
 - No analytics or tracking scripts
 - No cookies set by QuietRate
-- No production-provider claims
-- No App Store badge before release
-- No app-icon asset because the icon is not final
+- No live, real-time, or most-accurate rate claims
+- No App Store badge before public App Store availability
 - Responsive, semantic HTML and keyboard-visible focus behavior
 - QuietRate deep navy `#08192D`
+- Official Q geometry and production `[Q]uietRate` lockup are locked
+- Production lockup asset: `assets/brand/QuietRate-Lockup-Integrated-Dark.svg`
+- Optical favicon asset: `favicon.svg`
+- PNG favicon fallbacks: `favicon-16x16.png`, `favicon-32x32.png`, `favicon-48x48.png`
+- Apple touch icon: `apple-touch-icon.png`
 
-## Deploy
-Deploy as-is to GitHub Pages, Cloudflare Pages, Netlify, Vercel static hosting, or a conventional web server.
+## Deployment
+Established deployment is GitHub Pages from the existing repository and `main` publication root, with `quietrate.app` as the custom domain. `CNAME` and `.nojekyll` are included.
 
-For GitHub Pages, place these files at the publication root, enable Pages, set the custom domain to `quietrate.app`, and configure DNS according to GitHub's current instructions. `CNAME` and `.nojekyll` are included.
+Do not change DNS, domain ownership, hosting provider, or deployment architecture without explicit owner approval.
 
-## Before App Store release
-Re-review and update:
-- production data-provider identity and attribution
-- licence/source obligations
-- provider-related privacy disclosures
-- App Store Privacy answers
-- Sources & Methodology production content
-- all pre-release notices
-- App Store download badge/link
-- final app icon/social preview artwork
+## Release-content maintenance
+The current public source, methodology, attribution, and privacy wording reflects the frozen V1 production configuration.
 
-Do not publish a provider name or rights claim until that provider has actually been approved.
+Re-review these pages if the production source architecture, source terms, privacy practices, or App Store release state changes. Do not change, add, substitute, or broaden production providers without explicit owner approval.
+
+Do not add an App Store download badge or link until the app is publicly available.

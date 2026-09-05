@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sources &amp; Methodology — QuietRate</title>
-  <meta name="description" content="How QuietRate describes exchange-rate sources, effective dates, retrieval timing, and reference-rate methodology.">
+  <meta name="description" content="How QuietRate uses ECB and TAIFEX reference-rate observations, derived rates, effective dates, retrieval timing, and local caching.">
   <meta name="theme-color" content="#08192D">
   <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://quietrate.app/sources/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sources &amp; Methodology — QuietRate">
-  <meta property="og:description" content="How QuietRate describes exchange-rate sources, effective dates, retrieval timing, and reference-rate methodology.">
+  <meta property="og:description" content="How QuietRate uses ECB and TAIFEX reference-rate observations, derived rates, effective dates, retrieval timing, and local caching.">
   <meta property="og:url" content="https://quietrate.app/sources/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
-  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -42,46 +42,56 @@
   <div class="wrap">
     <span class="eyebrow">Transparency</span>
     <h1>Sources &amp; Methodology</h1>
-    <p>How QuietRate describes source data, timing, and reference-rate context.</p>
+    <p>How QuietRate describes source observations, derived rates, timing, and reference-rate context.</p>
   </div>
 </section>
 <section class="wrap prose">
   <div class="notice">
-    <strong>Pre-release status</strong>
-    <p>QuietRate is currently in development. A production exchange-rate source has not yet been approved for release.</p>
+    <strong>V1 pre-release source model</strong>
+    <p>QuietRate 1.0 is in pre-release testing. Its 31-currency production catalog uses European Central Bank (ECB) reference exchange-rate observations and Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</p>
   </div>
 
-  <h2>Development data</h2>
-  <p>Development builds use built-in sample data for testing and interface development. These values are <strong>not provided by a production financial-data source and should not be used for real-world financial decisions.</strong></p>
+  <h2>European Central Bank reference rates</h2>
+  <p><strong>Source: European Central Bank (ECB) reference exchange rates.</strong></p>
+  <p>The ECB side of QuietRate V1 consists of EUR plus 29 ECB-quoted currencies. The verified daily production series follow the ECB reference-rate family <code>EXR.D.&lt;CUR&gt;.EUR.SP00.A</code>.</p>
+  <p>QuietRate retrieves these ECB observations through <a href="https://api.frankfurter.dev">api.frankfurter.dev</a>, with the provider explicitly filtered to ECB. Frankfurter is the API transport layer for this path; it is not the institution that originates the ECB observations. QuietRate does not use Frankfurter’s default blended rates for the V1 ECB path.</p>
 
-  <h2>What will be published before release</h2>
-  <p>Before QuietRate is released publicly, this page will identify the information applicable to the production data configuration, including:</p>
-  <ul>
-    <li>the source or institution providing reference-rate data</li>
-    <li>relevant attribution information</li>
-    <li>applicable source or licence terms</li>
-    <li>reference or effective-date semantics</li>
-    <li>retrieval timing</li>
-    <li>methodology for derived rates where applicable</li>
-    <li>caching and offline-use treatment where applicable</li>
-    <li>required attribution, derived-data, or no-endorsement statements</li>
-  </ul>
-  <p>QuietRate will not describe a provider as approved until its use has been reviewed for the way the app actually displays, stores, and derives rate information.</p>
+  <h2>Taiwan Futures Exchange reference rates</h2>
+  <p><strong>Source: Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</strong></p>
+  <p>QuietRate V1 uses official TAIFEX USD/TWD reference observations for TWD. The related Taiwan government open-data listing is <a href="https://data.gov.tw/en/datasets/11339">dataset 11339</a>, published by the Securities and Futures Bureau and identifying the data as Taiwan Futures Exchange daily foreign exchange reference rates. The dataset is released under the <a href="https://data.gov.tw/license">Open Government Data License, version 1.0 (OGDL-Taiwan 1.0)</a>.</p>
+
+  <h2>QuietRate-derived cross rates</h2>
+  <p>Source observations and QuietRate-derived cross rates are not the same thing.</p>
+  <p>When a TWD pair requires observations from both source families, QuietRate calculates a cross rate from underlying ECB and TAIFEX reference-rate observations that share the applicable effective date. That result is a QuietRate-derived cross rate; it is not a cross rate published by the ECB or TAIFEX.</p>
 
   <h2>Effective date and retrieval time</h2>
   <p>These describe different things.</p>
   <dl class="definition-grid">
     <dt>Effective date</dt>
-    <dd>When a reference rate applies according to its source.</dd>
+    <dd>The source calendar date to which a reference observation applies.</dd>
     <dt>Retrieved at</dt>
-    <dd>When QuietRate obtained the data.</dd>
+    <dd>When QuietRate obtained the observation.</dd>
   </dl>
-  <p>A rate retrieved today may therefore carry an earlier effective date.</p>
+  <p>A rate retrieved today may therefore carry an earlier effective date. Retrieval time does not change the source observation’s effective date.</p>
 
-  <h2>Reference rates are not offered rates</h2>
-  <p>Reference exchange rates are informational values. They are not necessarily the rate available to you in a transaction.</p>
-  <p>Banks, card networks, merchants, money-transfer providers, and other services may apply different timing, spreads, fees, conversion methods, or proprietary rates.</p>
-  <p>QuietRate is not intended to provide tradable quotes.</p>
+  <h2>Caching and offline use</h2>
+  <p>QuietRate may persist original source observations locally on your device for app functionality, caching, and offline use. Source values, effective dates, and provenance remain source-faithful when cached. QuietRate-derived rates remain identified as derived rather than being relabeled as ECB or TAIFEX observations.</p>
+
+  <h2>Reference rates are not transaction rates</h2>
+  <p>Reference exchange rates are informational values, not executable or guaranteed transaction rates. Banks, card networks, merchants, money-transfer providers, and other services may apply different timing, spreads, fees, conversion methods, or proprietary rates.</p>
+
+  <h2>Attribution, reuse, and source links</h2>
+  <p>QuietRate uses factual source attribution and does not use ECB or TAIFEX logos or imply endorsement.</p>
+  <ul>
+    <li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">ECB euro foreign exchange reference rates</a></li>
+    <li><a href="https://www.ecb.europa.eu/stats/ecb_statistics/governance_and_quality_framework/html/usage_policy.en.html">ECB policy regarding reuse of ESCB statistics</a></li>
+    <li><a href="https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html">ECB disclaimer and copyright</a></li>
+    <li><a href="https://frankfurter.dev/providers/ecb/">Frankfurter ECB provider documentation</a> — transport/API documentation for ECB-pinned observations</li>
+    <li><a href="https://www.taifex.com.tw/enl/eng3/dlDailyFXRateView">TAIFEX Daily Foreign Exchange Rates</a></li>
+    <li><a href="https://data.gov.tw/en/datasets/11339">Taiwan Government Data Open Platform dataset 11339</a></li>
+    <li><a href="https://data.gov.tw/license">OGDL-Taiwan 1.0</a></li>
+  </ul>
+  <p>ECB policy permits reuse of publicly released ESCB statistics subject to attribution and source-faithful representation when presented as ECB statistics. OGDL-Taiwan 1.0 permits reuse subject to its attribution requirements and does not grant trademark rights. QuietRate-derived calculations are identified separately from source observations.</p>
 </section>
 
 </main>
@@ -91,7 +101,7 @@
     <div>
       <strong>QuietRate</strong><br>
       Currency conversion, kept clear.<br>
-      <span class="meta-note">QuietRate is currently in development.</span>
+      <span class="meta-note">QuietRate 1.0 is in pre-release testing.</span>
     </div>
     <div class="footer-links" aria-label="Footer">
       <a href="/privacy/">Privacy</a>
