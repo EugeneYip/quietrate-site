@@ -34,6 +34,6 @@ This repository is the approved QuietRate V1 pre-submission website baseline. Pr
 - Do not add an App Store badge or download link before the app is publicly available
 - QuietRate 1.0 may be described as pre-release, in TestFlight/internal testing, or coming to the App Store; do not describe it as publicly released
 - Keep `/privacy/`, `/support/`, and `/sources/` stable URLs
-- Support contact: contact@eugeneyip.com
+- Support contact: support@quietrate.app
 
 Re-review source/legal/privacy content if the production architecture, source terms, privacy practices, or public-release state changes.
