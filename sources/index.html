@@ -38,17 +38,48 @@
 
 <main id="main">
 
-<section class="page-hero">
+<section class="page-hero page-hero-wide">
   <div class="wrap">
     <span class="eyebrow">Transparency</span>
     <h1>Sources &amp; Methodology</h1>
     <p>How QuietRate describes source observations, derived rates, timing, and reference-rate context.</p>
   </div>
 </section>
-<section class="wrap prose">
+<section class="wrap prose prose-wide">
   <div class="notice source-summary">
     <strong>V1 pre-release source model</strong>
     <p>QuietRate 1.0 is in pre-release testing. Its 31-currency production catalog uses European Central Bank (ECB) reference exchange-rate observations and Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</p>
+    <div class="source-model">
+      <div class="source-model-inputs">
+        <article class="source-model-card">
+          <h3>European Central Bank reference rates</h3>
+          <p>Source: European Central Bank (ECB) reference exchange rates.</p>
+          <div class="source-transport">
+            <strong>api.frankfurter.dev</strong>
+            <span>Frankfurter is the API transport layer for this path; it is not the institution that originates the ECB observations.</span>
+          </div>
+        </article>
+        <article class="source-model-card">
+          <h3>Taiwan Futures Exchange reference rates</h3>
+          <p>Source: Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</p>
+        </article>
+      </div>
+      <div class="source-model-flow" aria-hidden="true"></div>
+      <article class="source-derived">
+        <h3>QuietRate-derived cross rates</h3>
+        <p>That result is a QuietRate-derived cross rate; it is not a cross rate published by the ECB or TAIFEX.</p>
+      </article>
+      <div class="source-timing-pair">
+        <div class="source-timing">
+          <strong>Effective date</strong>
+          <span>The source calendar date to which a reference observation applies.</span>
+        </div>
+        <div class="source-timing">
+          <strong>Retrieved at</strong>
+          <span>When QuietRate obtained the observation.</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <h2>European Central Bank reference rates</h2>
