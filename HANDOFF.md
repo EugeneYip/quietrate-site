@@ -1,6 +1,6 @@
 # QuietRate website implementation handoff
 
-This repository is the approved QuietRate V1 pre-submission website baseline. Preserve these constraints:
+This repository is the approved QuietRate V1 public-release website baseline. Preserve these constraints:
 
 ## Brand and visual
 - Public brand: QuietRate
@@ -31,8 +31,10 @@ This repository is the approved QuietRate V1 pre-submission website baseline. Pr
 - Use factual text attribution; do not add ECB or TAIFEX logos
 - Do not add analytics, tracking, external fonts, or cookies without explicit approval
 - Do not add JavaScript unless separately approved and necessary
-- Do not add an App Store badge or download link before the app is publicly available
-- QuietRate 1.0 may be described as pre-release, in TestFlight/internal testing, or coming to the App Store; do not describe it as publicly released
+- Public App Store availability is Owner-confirmed. Canonical destination: https://apps.apple.com/us/app/quietrate-currency-converter/id6806090397
+- The prior prohibition on App Store download links applied before public availability. The current site may use an existing-style plain-text App Store CTA to the canonical destination above.
+- App Store badge artwork is not part of the current website baseline and must not be added without separate approval.
+- Do not represent unreleased development-lineage work as part of the public App Store release.
 - Keep `/privacy/`, `/support/`, and `/sources/` stable URLs
 - Support contact: support@quietrate.app
 

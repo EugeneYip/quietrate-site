@@ -1,12 +1,12 @@
 # QuietRate public website — v1
 
-Static, dependency-free pre-release website for `quietrate.app`.
+Static, dependency-free public website for `quietrate.app`.
 
-QuietRate 1.0 is in TestFlight/internal pre-release testing and is not yet publicly available on the App Store.
+QuietRate 1.0 is publicly available on the App Store: https://apps.apple.com/us/app/quietrate-currency-converter/id6806090397
 
 ## Pages
 - `/` — product landing page
-- `/privacy/` — pre-release privacy policy
+- `/privacy/` — privacy policy
 - `/support/` — support and contact
 - `/sources/` — source and methodology transparency
 
@@ -24,7 +24,7 @@ QuietRate 1.0 is in TestFlight/internal pre-release testing and is not yet publi
 - No analytics or tracking scripts
 - No cookies set by QuietRate
 - No live, real-time, or most-accurate rate claims
-- No App Store badge before public App Store availability
+- Public App Store availability is Owner-confirmed; the verified App Store destination may be linked
 - Responsive, semantic HTML and keyboard-visible focus behavior
 - QuietRate deep navy `#08192D`
 - Official Q geometry and production `[Q]uietRate` lockup are locked
@@ -43,4 +43,6 @@ The current public source, methodology, attribution, and privacy wording reflect
 
 Re-review these pages if the production source architecture, source terms, privacy practices, or App Store release state changes. Do not change, add, substitute, or broaden production providers without explicit owner approval.
 
-Do not add an App Store download badge or link until the app is publicly available.
+Canonical App Store destination: https://apps.apple.com/us/app/quietrate-currency-converter/id6806090397
+
+The prior prohibition on App Store download links applied before public availability. This release-state sync authorizes the existing-style plain-text App Store CTA. App Store badge artwork is not part of this milestone and must not be added without separate approval.
