@@ -47,7 +47,7 @@
 </section>
 <section class="wrap prose prose-wide">
   <div class="notice source-summary">
-    <strong>V1 source model</strong>
+    <strong>Production source model</strong>
     <p>QuietRate's 31-currency production catalog uses European Central Bank (ECB) reference exchange-rate observations and Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</p>
     <div class="source-model">
       <div class="source-model-inputs">
@@ -84,12 +84,12 @@
 
   <h2>European Central Bank reference rates</h2>
   <p><strong>Source: European Central Bank (ECB) reference exchange rates.</strong></p>
-  <p>The ECB side of QuietRate V1 consists of EUR plus 29 ECB-quoted currencies. The verified daily production series follow the ECB reference-rate family <code>EXR.D.&lt;CUR&gt;.EUR.SP00.A</code>.</p>
-  <p>QuietRate retrieves these ECB observations through <a href="https://api.frankfurter.dev">api.frankfurter.dev</a>, with the provider explicitly filtered to ECB. Frankfurter is the API transport layer for this path; it is not the institution that originates the ECB observations. QuietRate does not use Frankfurter’s default blended rates for the V1 ECB path.</p>
+  <p>The ECB side of QuietRate consists of EUR plus 29 ECB-quoted currencies. The verified daily production series follow the ECB reference-rate family <code>EXR.D.&lt;CUR&gt;.EUR.SP00.A</code>.</p>
+  <p>QuietRate retrieves these ECB observations through <a href="https://api.frankfurter.dev">api.frankfurter.dev</a>, with the provider explicitly filtered to ECB. Frankfurter is the API transport layer for this path; it is not the institution that originates the ECB observations. QuietRate does not use Frankfurter’s default blended rates for the ECB path.</p>
 
   <h2>Taiwan Futures Exchange reference rates</h2>
   <p><strong>Source: Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</strong></p>
-  <p>QuietRate V1 uses official TAIFEX USD/TWD reference observations for TWD. The related Taiwan government open-data listing is <a href="https://data.gov.tw/en/datasets/11339">dataset 11339</a>, published by the Securities and Futures Bureau and identifying the data as Taiwan Futures Exchange daily foreign exchange reference rates. The dataset is released under the <a href="https://data.gov.tw/license">Open Government Data License, version 1.0 (OGDL-Taiwan 1.0)</a>.</p>
+  <p>QuietRate uses official TAIFEX USD/TWD reference observations for TWD. The related Taiwan government open-data listing is <a href="https://data.gov.tw/en/datasets/11339">dataset 11339</a>, published by the Securities and Futures Bureau and identifying the data as Taiwan Futures Exchange daily foreign exchange reference rates. The dataset is released under the <a href="https://data.gov.tw/license">Open Government Data License, version 1.0 (OGDL-Taiwan 1.0)</a>.</p>
 
   <h2>QuietRate-derived cross rates</h2>
   <p>Source observations and QuietRate-derived cross rates are not the same thing.</p>
@@ -132,7 +132,7 @@
     <div>
       <strong>QuietRate</strong><br>
       Currency conversion, kept clear.<br>
-      <span class="meta-note">QuietRate 1.0 is available on the App Store.</span>
+      <span class="meta-note">QuietRate is available on the App Store.</span>
     </div>
     <div class="footer-links" aria-label="Footer">
       <a href="/privacy/">Privacy</a>
