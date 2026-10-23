@@ -91,9 +91,22 @@
   <p><strong>Source: Taiwan Futures Exchange (TAIFEX) Daily Foreign Exchange Reference Rates.</strong></p>
   <p>QuietRate uses official TAIFEX USD/TWD reference observations for TWD. The related Taiwan government open-data listing is <a href="https://data.gov.tw/en/datasets/11339">dataset 11339</a>, published by the Securities and Futures Bureau and identifying the data as Taiwan Futures Exchange daily foreign exchange reference rates. The dataset is released under the <a href="https://data.gov.tw/license">Open Government Data License, version 1.0 (OGDL-Taiwan 1.0)</a>.</p>
 
+  <h2>Rates QuietRate calculates from one source</h2>
+  <p>Each source publishes a reference rate in a particular direction. The ECB publishes each currency against the euro, as units of that currency per 1 EUR. The TAIFEX reference rate that QuietRate uses is published as TWD per 1 USD.</p>
+  <p>Other rates that use only one source’s observations are calculated by QuietRate:</p>
+  <ul>
+    <li>Reciprocals, such as a JPY-to-EUR rate calculated from the ECB’s EUR-to-JPY observation, or a TWD-to-USD rate calculated from TAIFEX’s USD/TWD observation.</li>
+    <li>Cross rates between two non-euro currencies that the ECB quotes, such as USD to JPY, calculated from the ECB’s euro-based observations for both currencies.</li>
+  </ul>
+  <p>These results are QuietRate calculations from source observations. They are not rates that the ECB or TAIFEX publishes in that pair or direction. When QuietRate shares a rate calculated this way, it states “Calculated by QuietRate from published source data.”</p>
+
   <h2>QuietRate-derived cross rates</h2>
   <p>Source observations and QuietRate-derived cross rates are not the same thing.</p>
   <p>When a TWD pair requires observations from both source families, QuietRate calculates a cross rate from underlying ECB and TAIFEX reference-rate observations that share the applicable effective date. That result is a QuietRate-derived cross rate; it is not a cross rate published by the ECB or TAIFEX.</p>
+
+  <h2>Converted amounts</h2>
+  <p>A converted amount is QuietRate’s own arithmetic. QuietRate multiplies the amount you enter by the applicable rate — a source observation, or a rate QuietRate calculated as described above — and rounds the result for display. The ECB and TAIFEX publish reference rates, not converted amounts.</p>
+  <p>Like the reference rates they use, converted amounts are informational. They are not transaction amounts, and a bank, card network, or other service may charge or pay a different amount.</p>
 
   <h2>Effective date and retrieval time</h2>
   <p>These describe different things.</p>
@@ -103,7 +116,7 @@
     <dt>Retrieved at</dt>
     <dd>When QuietRate obtained the observation.</dd>
   </dl>
-  <p>A rate retrieved today may therefore carry an earlier effective date. Retrieval time does not change the source observation’s effective date.</p>
+  <p>A rate retrieved today may therefore carry an earlier effective date. Retrieval time does not change the source observation’s effective date. The ECB and TAIFEX publish on their own calendars, so rates from the two sources can carry different effective dates.</p>
 
   <h2>Caching and offline use</h2>
   <p>QuietRate may persist original source observations locally on your device for app functionality, caching, and offline use. Source values, effective dates, and provenance remain source-faithful when cached. QuietRate-derived rates remain identified as derived rather than being relabeled as ECB or TAIFEX observations.</p>
